@@ -109,31 +109,42 @@ Rust provides the shared domain model and native services. Selected browser-comp
 
 ## Architecture
 
-```text
-                       SECTOR
-                          |
-             +------------+------------+
-             |                         |
-      Desktop Workstation       SECTOR Companion
-      Electron + React          Browser / PWA
-             |                         |
-      WebGPU Renderer           WebGPU Renderer
-             |                         |
-      Native Rust Core          Rust / WASM
-             |                         |
-             +------ Gateway ----------+
-                        |
-               ATC Session Engine
-                        |
-           +------------+------------+
-           |            |            |
-       Networking     Voice       Navigation
-           |            |            |
-           +------------+------------+
-                        |
-                  VATSIM Network
-             (future approved integration)
+```mermaid
+flowchart TB
+    subgraph workstation["Desktop workstation"]
+        desktop["Electron · React · TypeScript"]
+        radar["WebGPU renderer · WGSL"]
+        engine["Rust ATC engine · Tokio"]
+        storage[("libSQL")]
+        desktop --> radar
+        desktop <--> engine
+        engine <--> storage
+    end
+
+    subgraph companion["iPad / Android companion"]
+        pwa["React PWA · Tailwind CSS"]
+        wasm["Rust / WebAssembly"]
+        pwa <--> wasm
+    end
+
+    gateway["Authenticated device gateway"]
+    desktop <--> gateway
+    gateway <-->|WebSocket| pwa
+    gateway <--> engine
+
+    navigation["Navigation and sector-data tooling"]
+    networking["Network adapter"]
+    voice["Voice integration"]
+    vatsim["VATSIM network"]
+
+    navigation --> engine
+    engine <--> networking
+    engine <--> voice
+    networking -.->|Requires VATSIM approval| vatsim
+    voice -.->|Requires VATSIM approval| vatsim
 ```
+
+This diagram describes our target architecture. The desktop engine owns the session; companion interactions pass through the authenticated gateway. Network and voice integration require the applicable VATSIM approvals.
 
 The main architectural layers are:
 
@@ -148,46 +159,6 @@ The domain engine must remain independent of any particular UI framework or desk
 ## Repository Structure
 
 SECTOR is organized as a monorepo using pnpm for TypeScript packages and Cargo for Rust crates.
-
-The following structure is the intended repository layout; some modules will be introduced progressively.
-
-```text
-sector/
-├── apps/
-│   ├── desktop/              # Desktop ATC workstation
-│   └── companion/            # Browser and tablet companion
-│
-├── packages/
-│   ├── ui/                   # Shared UI components
-│   ├── renderer/             # WebGPU renderer and shaders
-│   ├── input/                # Mouse, touch and stylus input
-│   ├── protocol/             # TypeScript protocol bindings
-│   └── config/               # Shared tooling configuration
-│
-├── crates/
-│   ├── sector-core/          # ATC domain model
-│   ├── sector-geometry/      # Geodesy and spatial operations
-│   ├── sector-protocol/      # Shared protocol definitions
-│   ├── sector-gateway/       # Companion synchronization
-│   ├── sector-wasm/          # WebAssembly bindings
-│   ├── sector-fsd/           # Future network integration
-│   └── sector-audio/         # Future voice integration
-│
-├── schemas/                  # Shared data specifications
-├── assets/                   # Application assets
-├── fixtures/                 # Synthetic and test datasets
-├── tests/                    # Integration and end-to-end tests
-├── tools/                    # Development utilities
-├── docs/
-│   ├── architecture/
-│   └── adr/                  # Architecture Decision Records
-│
-├── .github/
-├── Cargo.toml
-├── pnpm-workspace.yaml
-├── package.json
-└── README.md
-```
 
 ## Getting Started
 

@@ -1,0 +1,18 @@
+name: Feature request
+description: Report an actionable feature request
+labels: ["enhancement", "status:triage"]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Include the affected repository, expected behavior, and current behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Reproduction or proposed workflow
+      description: Include platform and versions. Use synthetic data; remove private details.
+    validations:
+      required: true

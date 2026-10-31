@@ -8,5 +8,9 @@
     "check:rust": "cargo check --workspace",
     "test:rust": "cargo test --workspace",
     "fmt:rust": "cargo fmt --all"
+  },
+  "packageManager": "pnpm@11.22.0",
+  "engines": {
+    "node": ">=24 <25"
   }
 }

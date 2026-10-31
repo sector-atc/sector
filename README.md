@@ -91,15 +91,15 @@ Interactive network use will require the necessary VATSIM approvals.
 |---|---|
 | Frontend | React, TypeScript |
 | Frontend tooling | Vite |
-| Desktop runtime | Electron (provisional) |
+| Desktop runtime | Electron |
 | Core engine | Rust |
-| Asynchronous services | Tokio (planned) |
+| Asynchronous services | Tokio |
 | Graphics | WebGPU, WGSL |
 | Browser computation | Rust / WebAssembly |
 | Mobile companion | Progressive Web App |
-| Styling | CSS / Tailwind CSS (proposed) |
-| Local storage | SQLite (planned) |
-| Device communication | WebSocket, with shared protocol definitions (planned) |
+| Styling | Tailwind CSS |
+| Database | [libSQL](https://github.com/tursodatabase/libsql) |
+| Device communication | WebSocket |
 
 The architecture intentionally separates the application interface from the ATC engine.
 

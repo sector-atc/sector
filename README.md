@@ -30,60 +30,12 @@ The project is built around five principles:
 
 ## Planned Features
 
-### Radar & Surveillance
+- **Radar:** WebGPU rendering, interactive aircraft labels, configurable symbology, sector maps, and ground surveillance.
+- **Controller tools:** Flight plans, electronic strips, coordination, ATIS, and customizable workspaces.
+- **Input:** Keyboard, mouse, touch, and stylus workflows, including annotations where supported.
+- **Companion:** Synchronized strips, charts, and panels on iPad and Android through an authenticated WebSocket gateway. The desktop owns the session and validates companion commands.
 
-- GPU-accelerated radar rendering using WebGPU
-- Interactive aircraft labels and track visualization
-- Configurable radar symbology and display settings
-- Aircraft history trails and trajectory visualization
-- Sector boundaries, airways, waypoints, and navigation data
-- Ground surveillance and detailed airport layouts
-- Multiple radar views and independent windows
-- High-DPI and multi-monitor support
-
-### Flight Data & Controller Tools
-
-- Flight-plan visualization and editing
-- Electronic flight progress strips
-- Controller coordination and handoff workflows
-- Departure and arrival management tools
-- ATIS and controller information
-- Configurable panels and workspaces
-- Keyboard shortcuts and command-based interactions
-
-### Touch & Stylus
-
-SECTOR is being designed with touch and pen input as first-class interaction methods.
-
-Planned capabilities include:
-
-- Apple Pencil and compatible Android stylus support
-- Handwritten annotations on electronic flight strips
-- Pressure-sensitive drawing where supported
-- Multitouch gestures for navigation and zooming
-- Touch-friendly flight-strip manipulation
-- Chart annotations and taxi-route visualization
-- Unified mouse, keyboard, touchscreen, and stylus input
-
-Device-specific capabilities will depend on operating-system and browser support.
-
-### SECTOR Companion
-
-SECTOR Companion is the planned browser-based interface for tablets, phones, and secondary devices.
-
-Rather than establishing an independent VATSIM connection, companion devices will connect to the primary workstation through a secure local gateway.
-
-Potential workflows include:
-
-- Using an iPad as a dedicated electronic flight-strip board
-- Displaying airport diagrams on an Android tablet
-- Viewing synchronized aircraft and flight-plan information
-- Managing selected workstation panels from another device
-- Sharing annotations and controller workspace state
-
-The desktop workstation will remain the authoritative owner of the controlling session. Companion commands will be subject to authentication, permissions, and validation.
-
-Interactive network use will require the necessary VATSIM approvals.
+Device capabilities depend on platform support. Live network operations require the applicable VATSIM approvals.
 
 ## Technology Stack
 
@@ -156,10 +108,6 @@ The main architectural layers are:
 
 The domain engine must remain independent of any particular UI framework or desktop runtime.
 
-## Repository Structure
-
-SECTOR is organized as a monorepo using pnpm for TypeScript packages and Cargo for Rust crates.
-
 ## Getting Started
 
 SECTOR is in early development. The following setup applies once the planned application scaffolding and root workspace scripts have been initialized.
@@ -226,54 +174,13 @@ Additional build instructions and operating-system requirements will be document
 
 ## Development Roadmap
 
-### Phase 1 — Foundation
+1. **Offline foundation:** Rust domain model, synthetic traffic, WebGPU radar, and aircraft selection.
+2. **Controller workspace:** Flight plans, electronic strips, sector data, and configurable input and layouts.
+3. **Companion:** Secure pairing, state synchronization, tablet workflows, and reconnection handling.
+4. **Network integration:** VATSIM connectivity, voice, and coordination, subject to the required approvals.
+5. **Extensions:** Ground-control tools, training and replay, plugins, and accessibility improvements.
 
-- [ ] Initialize the monorepo and development tooling
-- [ ] Establish the shared Rust domain model
-- [ ] Implement an offline synthetic traffic generator
-- [ ] Build the initial WebGPU radar renderer
-- [ ] Implement basic aircraft labels and selection
-- [ ] Create the desktop application shell
-- [ ] Establish cross-platform CI and automated testing
-
-### Phase 2 — Controller Workspace
-
-- [ ] Implement flight-plan and aircraft information panels
-- [ ] Build the electronic flight-strip system
-- [ ] Implement mouse, keyboard, touch, and stylus interactions
-- [ ] Add configurable layouts and multiple windows
-- [ ] Load supported sector and airport data
-- [ ] Implement radar display customization
-
-### Phase 3 — Companion
-
-- [ ] Establish the companion gateway
-- [ ] Implement secure device pairing
-- [ ] Synchronize aircraft and flight-plan state
-- [ ] Introduce tablet-optimized layouts
-- [ ] Support handwritten annotations and multitouch gestures
-- [ ] Implement validated companion commands and reconnection handling
-
-### Phase 4 — Network Integration
-
-Subject to the relevant VATSIM approvals and technical requirements:
-
-- [ ] Implement approved VATSIM connectivity
-- [ ] Integrate supported voice communication
-- [ ] Implement controller coordination and handoffs
-- [ ] Support live flight-plan operations
-- [ ] Validate operational behavior and network compatibility
-
-### Phase 5 — Extended Capabilities
-
-- [ ] Advanced ground-control workflows
-- [ ] Departure and arrival management tools
-- [ ] Replay and training scenarios
-- [ ] Plugin and extension infrastructure
-- [ ] Expanded customization and accessibility
-- [ ] Further platform integrations
-
-This roadmap describes development goals, not committed release dates or guaranteed network capabilities.
+We track actionable work in [Issues](https://github.com/sector-atc/sector/issues) and the [Roadmap board](https://github.com/orgs/sector-atc/projects/1). These are development goals, not release commitments.
 
 ## Design Principles
 

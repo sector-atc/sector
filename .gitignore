@@ -1,0 +1,30 @@
+
+# macOS
+.DS_Store
+
+# JavaScript / pnpm
+node_modules/
+dist/
+out/
+build/
+.vite/
+coverage/
+*.tsbuildinfo
+
+# Rust
+target/
+
+# Environment and local secrets
+.env
+.env.*
+!.env.example
+
+# Local development
+*.log
+*.pid
+.idea/
+.vscode/settings.json
+
+# Temporary files
+*.tmp
+*.bak

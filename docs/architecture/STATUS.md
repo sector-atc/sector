@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
+
 # Implementation baseline
 
 The existing Electron/React/TypeScript/Vite application is generated starter code. Five Cargo crates contain generated arithmetic examples, not ATC functionality. No WebGPU renderer, WASM API, companion PWA, gateway, VATSIM networking, or voice implementation exists.

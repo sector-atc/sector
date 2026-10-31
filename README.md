@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
+
 # SECTOR
 
 > [!WARNING]
@@ -377,7 +379,7 @@ Until then, prospective contributors can follow the repository and participate i
 
 SECTOR-authored software is licensed under **GNU AGPL version 3 only (`AGPL-3.0-only`)**. See [LICENSE](LICENSE) and [licensing scope](LICENSING.md).
 
-Documentation prose, branding, and datasets require separate content licensing. Dependencies and starter-template material retain their upstream terms. VATSIM approval and dataset rights are separate from source licensing.
+We license our original documentation, illustrations, and synthetic datasets under **CC-BY-SA-4.0**. We handle branding separately and preserve third-party terms. Our source license does not grant VATSIM approval or external dataset rights.
 
 ---
 

@@ -5,7 +5,7 @@
 >
 > SECTOR is not yet an operational VATSIM controller client. Live network connectivity and voice integration are planned features subject to the applicable VATSIM development and approval processes.
 
-**A cross-platform air traffic control workstation, intended to become open source once licensing is agreed.**
+**An open-source, cross-platform air traffic control workstation.**
 
 SECTOR is an early-stage air traffic control (ATC) client project designed for the VATSIM network. It aims to bring modern interface design, high-performance graphics, extensibility, and seamless multi-device workflows into a unified controller workstation.
 
@@ -375,11 +375,9 @@ Until then, prospective contributors can follow the repository and participate i
 
 ## License
 
-The project's open-source license has not yet been finalized.
+SECTOR-authored software is licensed under **GNU AGPL version 3 only (`AGPL-3.0-only`)**. See [LICENSE](LICENSE) and [licensing scope](LICENSING.md).
 
-Licensing will be selected after reviewing the requirements of the project's dependencies, integrations, and intended contribution model.
-
-Until a license is published, the source code should not be assumed to carry permission for redistribution or modification beyond what applicable law allows.
+Documentation prose, branding, and datasets require separate content licensing. Dependencies and starter-template material retain their upstream terms. VATSIM approval and dataset rights are separate from source licensing.
 
 ---
 
